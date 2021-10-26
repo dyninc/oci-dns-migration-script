@@ -1,3 +1,5 @@
+# Copyright (c) 2021, Oracle and/or its affiliates. All rights reserved.
+
 import argparse
 import dns.zone
 import dns.query
@@ -28,8 +30,6 @@ auth = Signer(tenancy=config['tenancy'], user=config['user'], fingerprint=config
 opcprincipal = '{"tenantId": "' + config['tenancy'] + '", "subjectId": "' + config['user'] + '"}'
 
 headers = {'opcprincipal': opcprincipal, 'Accept': 'application/json', 'Content-Type': 'text/dns'}
-
-GET_ZONES_URL = f'{oci.regions.endpoint_for("dns", config["region"])}/20180115/zones'
 
 compartment = args.oci_compartment
 if compartment == "":
