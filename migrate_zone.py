@@ -64,8 +64,12 @@ if dynect_zone._zone_type == 'Secondary':
     # Create a secondary zone in OCI DNS
 
     # Fetch the secondary zone
-    dynect_secondary_zone = SecondaryZone(args.zone_name)
-
+    try:
+        dynect_secondary_zone = SecondaryZone(args.zone_name)
+    except Exception:
+        print(f'\nFailed to load the secondary zone. The Dynect user may need the "SecondaryGet" permission in Dynect.')
+        quit(-1)
+        
     # Check if the secondary zone is configured to use a tsig key. If it is,
     # verify that a tsig key by that name has been created in OCI.
     if dynect_secondary_zone.tsig_key_name != '':
