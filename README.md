@@ -76,7 +76,7 @@ optional arguments:
                         The OCI compartment containing any tsig keys that are
                         used by zones to be migrated. By default, the same as
                         --oci-compartment_
-                        ```
+```
 
 ## IMPORTANT TIPS (IF YOU HAVE ADVANCED SERVICES AND USE THIS SCRIPT)
 
