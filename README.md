@@ -15,8 +15,7 @@ Requires Python 3.6 or higher
 
 Step 1: Install Python SDK
 
-Follow the [installation guide](https://oracle-cloud-infrastructure-python-
-sdk.readthedocs.io/en/latest/configuration.html) to install and configure the OCI Python SDK.
+Follow the [installation guide](https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/en/latest/configuration.html) to install and configure the OCI Python SDK.
 
 Step 2: Create OCI Config File (CLI File)
 
@@ -53,7 +52,7 @@ If a secondary zone is associated with a tsig key in Dynect, the tsig key will n
 
 **the default compartment the zone will be migrated to is the root of your OCI tenancy. users can use call pass a -h or --help (or see below) to add additional arguments such as compartment ocid**
 
-
+```
 _Migrate a zone from Dyn Managed DNS to OCI DNS
 
 positional arguments:
@@ -77,6 +76,7 @@ optional arguments:
                         The OCI compartment containing any tsig keys that are
                         used by zones to be migrated. By default, the same as
                         --oci-compartment_
+                        ```
 
 ## IMPORTANT TIPS (IF YOU HAVE ADVANCED SERVICES AND USE THIS SCRIPT)
 
