@@ -13,21 +13,21 @@ section at the bottom of this guide for important tips.
 
 Requires Python 3.6 or higher
 
-Step 1: Install Python SDK
+*Step 1: Install Python SDK*
 
 Follow the [installation guide](https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/en/latest/configuration.html) to install and configure the OCI Python SDK.
 
-Step 2: Create OCI Config File (CLI File)
+*Step 2: Create OCI Config File (CLI File)*
 
 Create a configuration file to use the OCI CLI following instructions provided [here](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/sdkconfig.htm#SDK_and_CLI_Configuration_File)
 
-Step 3: Install the Migration Script
+*Step 3: Install the Migration Script*
 
 Run the following command:
 
 `$ pip install oci dnspython requests dyn`
 
-Step 4: Usage
+*Step 4: Usage*
 
 `python migrate_zone.py example.com dynect-customer-name dynect-user-name`
 
@@ -50,7 +50,7 @@ If a secondary zone is associated with a tsig key in Dynect, the tsig key will n
 
 ## Help
 
-**the default compartment the zone will be migrated to is the root of your OCI tenancy. users can use call pass a -h or --help (or see below) to add additional arguments such as compartment ocid**
+**The default compartment the zone will be migrated to is the root of your OCI tenancy. Users can use call pass a -h or --help (or see below) to add additional arguments such as compartment ocid**
 
 ```
 _Migrate a zone from Dyn Managed DNS to OCI DNS
@@ -80,7 +80,7 @@ optional arguments:
 
 ## IMPORTANT TIPS (IF YOU HAVE ADVANCED SERVICES AND USE THIS SCRIPT)
 
-Using this script for zones with Advanced Services will require careful zone adjustments in order to replicate your service within OCI.
+Using this script for zones with Advanced Services is not currently supported and will require careful zone adjustments in order to replicate your service within OCI.
 
 If you are migrating a zone with Traffic Director (TD): On the node attached to your TD Service
 you should expect to see several service-related sub-nodes which will need to be removed
