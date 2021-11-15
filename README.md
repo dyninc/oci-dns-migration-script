@@ -39,18 +39,18 @@ TSIGGet
 
 ## Primary zones
 
-In order to migrate a primary zone, the script executes a zone transfer (AXFR) and will therefore require transfers to be allowed to the public IP address of the machine running the script. This is enabled in the "external nameservers" section of your Dyn Managed DNS account . Details and steps can be found on https://help.dyn.com/using-external-nameservers/
+In order to migrate a primary zone, the script executes a zone transfer (AXFR) and will therefore require transfers to be allowed to the public IP address of the machine running the script. This is enabled in the "external nameservers" section of your Dyn Managed DNS account. Details and steps can be found on https://help.dyn.com/using-external-nameservers/
 
 For help determining your public IP you can go to http://checkip.dyndns.com/
 
 
 ## Secondary zones
 
-If a secondary zone is associated with a tsig key in Dynect, the tsig key will need to have already been re-created in OCI with the same name for the script to migrate the secondary zone. If the tsig key was created in a compartment other than the one in to which the zone will be migrated, there is a command line option, --tsig-key-compartment, which can be used to specify which compartment the tsig key is in.
+If a secondary zone is associated with a TSIG key in Dynect, the TSIG key will need to have already been re-created in OCI with the same name for the script to migrate the secondary zone. If the TSIG key was created in a compartment other than the one in to which the zone will be migrated, there is a command line option, --tsig-key-compartment, which can be used to specify the compartment of the TSIG key.
 
 ## Help
 
-**The default compartment the zone will be migrated to is the root of your OCI tenancy. Users can use call pass a -h or --help (or see below) to add additional arguments such as compartment ocid.**
+**The default compartment the zone will be migrated to, is the root of your OCI tenancy. Users can pass -h or --help (or see below) to add additional arguments such as compartment ocid.**
 
 ```
 _Migrate a zone from Dyn Managed DNS to OCI DNS
