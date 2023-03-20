@@ -9,6 +9,8 @@ import getpass
 import socket
 import time
 import traceback
+import urllib.parse
+import urllib.request
 
 import requests
 import oci
@@ -110,7 +112,29 @@ dynect_password = args.dynect_password
 if dynect_password == "":
     dynect_password = getpass.getpass(prompt='Dynect password: ')
 
-dynect_session = DynectSession(args.dynect_customer, args.dynect_username, dynect_password)
+# determine if the dynect session should be configured to use a proxy
+PROXY_HOST = None
+PROXY_PORT = None
+PROXY_USER = None
+PROXY_PASS = None
+proxies = urllib.request.getproxies()
+https_proxy = proxies.get('https', proxies.get('all', None))
+if https_proxy is not None:
+    parsed = urllib.parse.urlparse(https_proxy)
+    PROXY_HOST = parsed.hostname
+    PROXY_PORT = parsed.port
+    PROXY_USER = parsed.username
+    PROXY_PASS = parsed.password
+
+dynect_session = DynectSession(
+    args.dynect_customer,
+    args.dynect_username,
+    dynect_password,
+    proxy_host=PROXY_HOST,
+    proxy_port=PROXY_PORT,
+    proxy_user=PROXY_USER,
+    proxy_pass=PROXY_PASS,
+)
 
 
 config = oci.config.from_file(args.oci_config_file, args.oci_config_profile)
