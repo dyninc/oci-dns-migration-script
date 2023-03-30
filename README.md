@@ -46,17 +46,16 @@ For help determining your public IP you can go to http://checkip.dyndns.com/
 
 ## Secondary zones
 
-If a secondary zone is associated with a TSIG key in Dynect, the TSIG key will need to have already been re-created in OCI with the same name for the script to migrate the secondary zone. If the TSIG key was created in a compartment other than the one in to which the zone will be migrated, there is a command line option, --tsig-key-compartment, which can be used to specify the compartment of the TSIG key.
+If a secondary zone is associated with a TSIG key in Dynect, the script will attempt to look up a TSIG key with the same name in Dynect, and if it is not found, the script will attempt to automatically create the TSIG key in OCI. If the command line option --tsig-key-compartment is used, that is the compartment in which the script will attempt to look for and create TSIG keys.
 
 ## Help
 
-**The default compartment the zone will be migrated to, is the root of your OCI tenancy. Users can pass -h or --help (or see below) to add additional arguments such as compartment ocid.**
+**The default compartment the zones will be migrated to is the root of your OCI tenancy. Users can pass -h or --help (or see below) to add additional arguments such as compartment ocid.**
 
 ```
-_Migrate a zone from Dyn Managed DNS to OCI DNS
+_Migrate zones from Dyn Managed DNS to OCI DNS
 
 positional arguments:
-  zone_name             Name of the zone to migrate
   dynect_customer       Name of the Dynect Customer which owns the zone to be
                         transferred
   dynect_username       Username of a Dynect user that has permission to
@@ -64,6 +63,12 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
+  --zone_name ZONE_NAME
+                        Name of the zone to migrate. Required if
+                        --zone_names_file is not used.
+  --zone_names_file ZONE_NAMES_FILE
+                        A file containing names of zones to migrate. Required
+                        if --zone_name is not used.
   --dynect-password DYNECT_PASSWORD
                         Password of the Dynect user
   --oci-compartment OCI_COMPARTMENT
@@ -75,7 +80,11 @@ optional arguments:
   --tsig-key-compartment TSIG_KEY_COMPARTMENT
                         The OCI compartment containing any tsig keys that are
                         used by zones to be migrated. By default, the same as
-                        --oci-compartment_
+                        --oci-compartment
+  --ignore-failures     If an error occurs while migrating a zone, skip that
+                        zone and continue trying to migrate the rest.
+  --no-ignore-failures  If an error occurs while migrating a zone, exit the
+                        script without migrating any more zones._
 ```
 
 ## IMPORTANT TIPS (IF YOU HAVE ADVANCED SERVICES AND USE THIS SCRIPT)
