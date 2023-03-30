@@ -158,7 +158,7 @@ auth = Signer(
 opcprincipal = f'{{"tenantId": "{config["tenancy"]}", "subjectId": "{config["user"]}"}}'
 
 headers = {
-    'opcprincipal': opcprincipal,
+    'opc-principal': opcprincipal,
     'Accept': 'application/json',
 }
 
