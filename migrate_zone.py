@@ -35,16 +35,16 @@ parser = argparse.ArgumentParser(
 
 zone_target_group = parser.add_mutually_exclusive_group(required=True)
 zone_target_group.add_argument(
-    '--zone_name',
+    '--zone-name',
     type=str,
     default=None,
-    help='Name of the zone to migrate. Required if --zone_names_file is not used.'
+    help='Name of the zone to migrate. Required if --zone-names-file is not used.'
 )
 zone_target_group.add_argument(
-    '--zone_names_file',
+    '--zone-names-file',
     type=str,
     default=None,
-    help='A file containing names of zones to migrate. Required if --zone_name is not used.'
+    help='A file containing names of zones to migrate. Required if --zone-name is not used.'
 )
 
 parser.add_argument(

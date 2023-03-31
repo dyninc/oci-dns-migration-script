@@ -29,7 +29,11 @@ Run the following command:
 
 **Step 4: Usage**
 
-`python migrate_zone.py example.com dynect-customer-name dynect-user-name`
+`python migrate_zone.py dynect-customer-name dynect-user-name --zone-name example.com`
+
+Or
+
+`python migrate_zone.py dynect-customer-name dynect-user-name --zone-names-file zones.txt`
 
 Dynect credentials with permission to read the zone from Dynect are required. The following permissions should be enabled on the Dynect-user-name:
 
@@ -48,6 +52,15 @@ For help determining your public IP you can go to http://checkip.dyndns.com/
 
 If a secondary zone is associated with a TSIG key in Dynect, the script will attempt to look up a TSIG key with the same name in Dynect, and if it is not found, the script will attempt to automatically create the TSIG key in OCI. If the command line option --tsig-key-compartment is used, that is the compartment in which the script will attempt to look for and create TSIG keys.
 
+## Zone names file
+
+If the --zone-names-file option is used, the file should have one zone name per line. Ex:
+
+```
+example.com
+example.net
+```
+
 ## Help
 
 **The default compartment the zones will be migrated to is the root of your OCI tenancy. Users can pass -h or --help (or see below) to add additional arguments such as compartment ocid.**
@@ -63,12 +76,12 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
-  --zone_name ZONE_NAME
+  --zone-name ZONE_NAME
                         Name of the zone to migrate. Required if
-                        --zone_names_file is not used.
-  --zone_names_file ZONE_NAMES_FILE
+                        --zone-names-file is not used.
+  --zone-names-file ZONE_NAMES_FILE
                         A file containing names of zones to migrate. Required
-                        if --zone_name is not used.
+                        if --zone-name is not used.
   --dynect-password DYNECT_PASSWORD
                         Password of the Dynect user
   --oci-compartment OCI_COMPARTMENT
