@@ -15,7 +15,7 @@ Requires Python 3.6 or higher
 
 **Step 1: Install Python SDK**
 
-Follow the [installation guide](https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/en/latest/configuration.html) to install and configure the OCI Python SDK.
+Follow the [installation guide](https://docs.oracle.com/en-us/iaas/tools/python/2.100.0/installation.html) to install and configure the OCI Python SDK.
 
 **Step 2: Create OCI Config File (CLI File)**
 
